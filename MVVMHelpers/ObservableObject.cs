@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace MVVMHelpers
@@ -15,7 +16,7 @@ namespace MVVMHelpers
         /// <returns>Whether or not the Property has changed</returns>
         protected bool Set<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
         {
-            if (field.Equals(newValue))
+            if (EqualityComparer<T>.Default.Equals(field, newValue))
                 return false;
 
             field = newValue;

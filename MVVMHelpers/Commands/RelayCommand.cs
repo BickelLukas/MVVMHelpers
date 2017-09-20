@@ -45,10 +45,10 @@ namespace MVVMHelpers.Commands
     /// <inheritdoc />
     public class RelayCommand : ICommand
     {
-        private readonly Action<object> _execute;
-        private readonly Predicate<object> _canExecute;
+        private readonly Action _execute;
+        private readonly Func<bool> _canExecute;
 
-        public RelayCommand(Action<object> execute)
+        public RelayCommand(Action execute)
             : this(execute, null)
         {
         }
@@ -58,7 +58,7 @@ namespace MVVMHelpers.Commands
         /// </summary>
         /// <param name="execute">The execution logic.</param>
         /// <param name="canExecute">The execution status logic.</param>
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        public RelayCommand(Action execute, Func<bool> canExecute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
@@ -66,12 +66,12 @@ namespace MVVMHelpers.Commands
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute?.Invoke(parameter) ?? true;
+            return _canExecute?.Invoke() ?? true;
         }
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            _execute();
         }
 
         public event EventHandler CanExecuteChanged;
