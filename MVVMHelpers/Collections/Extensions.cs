@@ -9,7 +9,7 @@ namespace MVVMHelpers.Collections
         /// <summary>
         /// Observes the given Property and refilteres to collection when it changes
         /// </summary>
-        public static FilteredObservableCollection<TCommand> ObservesProperty<TCommand, TProp>(this FilteredObservableCollection<TCommand> command, Expression<Func<TProp>> propertyExpression)
+        public static FilteredObservableCollection<TCommand> Observes<TCommand, TProp>(this FilteredObservableCollection<TCommand> command, Expression<Func<TProp>> propertyExpression)
         {
             PropertyObserver.Observes(propertyExpression, command.FilterChanged);
             return command;

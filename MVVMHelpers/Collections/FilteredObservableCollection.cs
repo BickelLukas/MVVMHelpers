@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace MVVMHelpers.Collections
     /// <typeparam name="T">Item type</typeparam>
     public class FilteredObservableCollection<T> : ObservableRangeCollection<T>
     {
-        private readonly ObservableRangeCollection<T> _baseCollection;
+        private readonly ObservableCollection<T> _baseCollection;
         private Func<T, bool> _filter;
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace MVVMHelpers.Collections
         /// </summary>
         /// <param name="baseCollection">The Collection used as a base</param>
         /// <param name="filter">The filter used to filter the items</param>
-        public FilteredObservableCollection(ObservableRangeCollection<T> baseCollection, Func<T, bool> filter = null)
+        public FilteredObservableCollection(ObservableCollection<T> baseCollection, Func<T, bool> filter = null)
         {
             _baseCollection = baseCollection;
             _filter = filter;

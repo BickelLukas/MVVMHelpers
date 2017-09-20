@@ -7,11 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" DataContext="{Binding Path=CommandsExampleViewModel, Source={StaticResource Locator}}">
-            <TextBox Width="100" Margin="10" Text="{Binding Username}"  />
-            <TextBox Width="100" Margin="10" Text="{Binding Password}"  />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" DataContext="{Binding Path=CommandsExampleViewModel, Source={StaticResource Locator}}">
+            <TextBox Width="100" Margin="10" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"  />
+            <TextBox Width="100" Margin="10" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"  />
             <Button Width="100" Margin="10" Command="{Binding LoginCommand}">Login</Button>
         </StackPanel>
-
+        <StackPanel Grid.Column="1" DataContext="{Binding Path=CollectionExampleViewModel,Source={StaticResource Locator} }">
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FilterString, UpdateSourceTrigger=PropertyChanged}"/>
+            <ListView Height="300" ItemsSource="{Binding FilteredItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding}"></Label>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Window>
