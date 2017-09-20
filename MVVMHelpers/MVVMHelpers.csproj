@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
+    <Authors>Lukas Bickel</Authors>
+    <Company />
+    <Description>This is a collection of useful Helpers needed when developing applications with MVVM</Description>
+    <PackageProjectUrl>https://github.com/BickelLukas/MVVMHelpers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BickelLukas/MVVMHelpers</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>MVVM, Helpers, Observable, NotifyPropertyChanged</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Bickellukas.MVVMHelpers</PackageId>
   </PropertyGroup>
 
 </Project>

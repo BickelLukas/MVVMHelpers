@@ -2,6 +2,8 @@
 
 This is a collection of useful Helpers needed when developing applications with MVVM
 
+Available on NuGet: https://www.nuget.org/packages/Bickellukas.MVVMHelpers
+
 ## Included Files
 
 ### ObservableObject
